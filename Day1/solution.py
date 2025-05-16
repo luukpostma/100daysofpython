@@ -27,28 +27,24 @@ scissors = '''
 ---.__(___)
 '''
 
-game_images = [rock, paper, scissors]
+game_art = [rock, paper, scissors]
 
-user_choice = int(input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors.\n"))
-# Note: it's worth checking if the user has made a valid choice before the next line of code.
-# If the user typed somthing other than 0, 1 or 2 the next line will give you an error.
-# You could for example write:
-if user_choice >= 0 and user_choice <= 2:
-    print(game_images[user_choice])
+# player becomes 0, 1 or 2
+player = int(input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors.\n"))
+computer = random.randint(0, 2)
 
-computer_choice = random.randint(0, 2)
-print("Computer chose:")
-print(game_images[computer_choice])
+# print(game_art[computer])
+print(f"You choose: {game_art[player]}")
+print(f"Computer choose: {game_art[computer]}")
 
-if user_choice >= 3 or user_choice < 0:
-    print("You typed an invalid number. You lose!")
-elif user_choice == 0 and computer_choice == 2:
-    print("You win!")
-elif computer_choice == 0 and user_choice == 2:
+# game logic
+if player < 0 or player > 2:
+    print("Invalid choice. You lose!")
+elif (player == 0 and computer == 1 or
+      player == 1 and computer == 2 or
+      player == 2 and computer == 0):
     print("You lose!")
-elif computer_choice > user_choice:
-    print("You lose!")
-elif user_choice > computer_choice:
+elif (player == 0 and computer == 2 or
+      player == 1 and computer == 0 or
+      player == 2 and computer == 1):
     print("You win!")
-elif computer_choice == user_choice:
-    print("It's a draw!")
